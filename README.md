@@ -1,4 +1,4 @@
-# ollama-vm
+# qwen-microvm
 
 Run [Qwen 3.6 27B](https://ollama.com/library/qwen3.6:27b) in an isolated NixOS microVM via [microvm.nix](https://github.com/microvm-nix/microvm.nix) (QEMU+KVM). Your project directory is mounted read-write at `/work` inside the guest via virtiofs — no root required.
 
