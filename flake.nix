@@ -26,7 +26,7 @@
 
             microvm = {
               hypervisor = "qemu";
-              mem = 20000;
+              mem = 24000;
               vcpu = 8;
 
               shares = [
@@ -94,16 +94,22 @@
               git config --global --add safe.directory /work 2>/dev/null || true
               cd /work 2>/dev/null || true
               mkdir -p .ollama 2>/dev/null || true
-stop
+
+              ollama serve&
+              while [ "$(systemctl is-active ollama)" = "inactive" ]
+              do
+                echo "Waiting for ollama service to start..."
+                sleep 1 
+              done
+              echo $(systemctl is-active ollama)
+
               ##############################################################################################
               #
               #                        ADD COMMAND LINE OPTIONS TO OLLAMA HERE
               #
               ##############################################################################################
 
-              ollama \
-                  run qwen3.6:27b
-                  --settings='/work/settings.json'
+              ollama run qwen3.6:27b
 
               # power down VM (but leave the daemon running) 
               sudo poweroff

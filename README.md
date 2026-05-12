@@ -109,7 +109,7 @@ Rebuild with `make vm`.
 
 | Resource | Default  |
 |----------|----------|
-| RAM      | 20000 MB |
-| vCPUs    | 4        |
+| RAM      | 24000 MB |
+| vCPUs    | 8        |
 | Network  | User-mode (SLiRP) |
 | Work dir | Host directory via virtiofs (read-write) |
